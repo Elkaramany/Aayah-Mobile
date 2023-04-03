@@ -12,66 +12,67 @@ import Controls from './Controls'
 const { width, height } = Dimensions.get('window')
 
 const App = () => {
-  const ref = React.useRef();
-  const { verse, englishVerse, loading, fetchVerse, getRandomImage, toggleAudio, isPlaying, imageSource } = useQuranVerse()
+  const { verse, englishVerse, loading, fetchVerse, getRandomImage, toggleAudio, isPlaying, imageSource, viewShotRef, captureScreen } = useQuranVerse()
 
   return (
-    <ImageBackground
-      source={imageSource}
-      style={{ flex: 1 }}
-    >
-      <View style={styles.container}>
-        {loading || !verse ?
-          <View style={[styles.centered, { flex: 1 }]}>
-            <Spinner />
-          </View>
-          :
-          <View style={[{ flex: 1 }, styles.centered]}>
-
-            <View style={{ flex: 1, paddingTop: verticalScale(30) }}>
-              <Text str={verse?.surah.name} big />
-              <Text str={verse?.surah.englishName} big style={{ paddingVertical: verticalScale(5) }} />
-              <Text str={verse?.surah.englishNameTranslation} big />
+    <ViewShot style={{ flex: 1 }} ref={viewShotRef}>
+      <ImageBackground
+        source={imageSource}
+        style={{ flex: 1 }}
+      >
+        <View style={styles.container}>
+          {loading || !verse ?
+            <View style={[styles.centered, { flex: 1 }]}>
+              <Spinner />
             </View>
+            :
+            <View style={[{ flex: 1 }, styles.centered]}>
+              <View style={{ flex: 1, paddingTop: verticalScale(30) }}>
+                <Text str={verse?.surah.name} big />
+                <Text str={verse?.surah.englishName} big style={{ paddingVertical: verticalScale(5) }} />
+                <Text str={verse?.surah.englishNameTranslation} big />
+              </View>
 
-            <View style={[{ flex: 7, }, styles.centered]}>
-              <BlurView
-                blurType="light"
-                blurAmount={10}
-                reducedTransparencyFallbackColor="white"
-                style={{ borderRadius: 10 }}
-              >
-                <Text
-                  str={verse?.text}
-                  big
-                  style={{
-                    fontWeight: 'bold',
-                    paddingVertical: verticalScale(10),
-                  }}
+              <View style={[{ flex: 7, }, styles.centered]}>
+                <BlurView
+                  blurType="light"
+                  blurAmount={10}
+                  reducedTransparencyFallbackColor="white"
+                  style={{ borderRadius: 10 }}
+                >
+                  <Text
+                    str={verse?.text}
+                    big
+                    style={{
+                      fontWeight: 'bold',
+                      paddingVertical: verticalScale(10),
+                    }}
+                  />
+                  <Text str={englishVerse?.text} big />
+                </BlurView>
+              </View>
+
+              <View style={{ flex: 1 }}>
+                <View style={styles.line} />
+                <Text str={`${verse?.surah.revelationType} Ayah`} style={{ marginVertical: verticalScale(10) }} />
+                <Text str={` - ${verse?.surah?.number}:${verse?.numberInSurah} -`} />
+              </View>
+
+              <View style={{ flex: 1 }}>
+                <Controls
+                  onRefreshPress={fetchVerse}
+                  onDownloadPress={captureScreen}
+                  onSearchPress={() => { }}
+                  onPlayPress={toggleAudio}
+                  onScreenshotPress={getRandomImage}
+                  isPlaying={isPlaying}
                 />
-                <Text str={englishVerse?.text} big />
-              </BlurView>
+              </View>
             </View>
-
-            <View style={{ flex: 1 }}>
-              <View style={styles.line} />
-              <Text str={`${verse?.surah.revelationType} Ayah`} style={{ marginVertical: verticalScale(10) }} />
-              <Text str={` - ${verse?.surah?.number}:${verse?.numberInSurah} -`} />
-            </View>
-            <View style={{ flex: 1 }}>
-              <Controls
-                onRefreshPress={fetchVerse}
-                onDownloadPress={() => { }}
-                onSearchPress={() => { }}
-                onPlayPress={toggleAudio}
-                onScreenshotPress={getRandomImage}
-                isPlaying={isPlaying}
-              />
-            </View>
-          </View>
-        }
-      </View>
-    </ImageBackground >
+          }
+        </View>
+      </ImageBackground >
+    </ViewShot>
   )
 }
 
@@ -85,12 +86,6 @@ const styles = StyleSheet.create({
   centered: {
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  bottomMargined: {
-    marginBottom: verticalScale(20)
-  }, blurContainer: {
-    borderRadius: 10,
-    backgroundColor: 'rgba(255, 255, 255, 0.5)', // Set the background color to semi-transparent white
   },
   line: {
     borderBottomColor: 'white',

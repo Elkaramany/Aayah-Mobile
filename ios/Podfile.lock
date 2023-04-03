@@ -331,6 +331,8 @@ PODS:
     - glog
   - react-native-blur (4.3.0):
     - React-Core
+  - react-native-cameraroll (5.3.1):
+    - React-Core
   - react-native-splash-screen (3.3.0):
     - React-Core
   - react-native-view-shot (3.6.0):
@@ -478,6 +480,7 @@ DEPENDENCIES:
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - "react-native-blur (from `../node_modules/@react-native-community/blur`)"
+  - "react-native-cameraroll (from `../node_modules/@react-native-camera-roll/camera-roll`)"
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - react-native-view-shot (from `../node_modules/react-native-view-shot`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
@@ -558,6 +561,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/logger"
   react-native-blur:
     :path: "../node_modules/@react-native-community/blur"
+  react-native-cameraroll:
+    :path: "../node_modules/@react-native-camera-roll/camera-roll"
   react-native-splash-screen:
     :path: "../node_modules/react-native-splash-screen"
   react-native-view-shot:
@@ -630,6 +635,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 14a342151ab810862998dfc99e2720746734e9b3
   React-logger: 94ec392ae471683635e4bf874d4e82f675399d2d
   react-native-blur: 50c9feabacbc5f49b61337ebc32192c6be7ec3c3
+  react-native-cameraroll: f3050460fe1708378698c16686bfaa5f34099be2
   react-native-splash-screen: 4312f786b13a81b5169ef346d76d33bc0c6dc457
   react-native-view-shot: 705f999ac2a24e4e6c909c0ca65c732ed33ca2ff
   React-perflogger: 883a55a9a899535eaf06d0029108ef9ef22cce92

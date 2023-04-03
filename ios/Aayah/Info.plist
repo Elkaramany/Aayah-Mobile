@@ -48,7 +48,10 @@
 	<key>NSAllowsArbitraryLoads</key>
 	<true/>
 	</dict>
-
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Photo Library Usage to add images</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Photo Library Usage to add images</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

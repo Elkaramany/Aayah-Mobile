@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { Alert } from 'react-native';
 import { get, QuranVerse, QuranVerseWithAudio } from './api';
+import { captureRef } from 'react-native-view-shot';
+import { CameraRoll } from "@react-native-camera-roll/camera-roll";
 import images from './assets/images';
 import useAudioPlayer from './useAudio';
 
@@ -59,17 +61,25 @@ const useQuranVerse = () => {
         }
     }
 
-    const captureScreen = () => {
-        viewShotRef.current.capture().then(uri => {
-            CameraRoll.saveToCameraRoll(uri);
+    const captureScreen = async () => {
+        const result = await captureRef(viewShotRef, {
+            format: 'jpg',
+            quality: 1,
         });
+        console.log(result, ' before here')
+        try {
+            const saveResult = await CameraRoll.save(result, { type: 'photo' });
+            console.log('Photo saved to camera roll:', saveResult);
+        } catch (error) {
+            console.log('Error saving photo to camera roll:', error);
+        }
     }
 
     const fetchVerse = () => {
         setAyahNumber(Math.floor(Math.random() * 6236) + 1)
     }
 
-    return { verse, englishVerse, fetchVerse, getRandomImage, toggleAudio, isPlaying, loading, imageSource };
+    return { verse, englishVerse, fetchVerse, getRandomImage, toggleAudio, isPlaying, loading, imageSource, viewShotRef, captureScreen, };
 };
 
 export default useQuranVerse;
