@@ -10,15 +10,20 @@ interface ApiResponse<T> {
     data: T | null;
     error: string | null;
 }
+export interface QuranVerseAudio {
+    audio: string;
+    audioSecondary: string[];
+}
+
 export interface QuranVerse {
     edition: {
-      direction: string;
-      englishName: string;
-      format: string;
-      identifier: string;
-      language: string;
-      name: string;
-      type: string;
+        direction: string;
+        englishName: string;
+        format: string;
+        identifier: string;
+        language: string;
+        name: string;
+        type: string;
     };
     hizbQuarter: number;
     juz: number;
@@ -29,16 +34,17 @@ export interface QuranVerse {
     ruku: number;
     sajda: boolean;
     surah: {
-      englishName: string;
-      englishNameTranslation: string;
-      name: string;
-      number: number;
-      numberOfAyahs: number;
-      revelationType: string;
+        englishName: string;
+        englishNameTranslation: string;
+        name: string;
+        number: number;
+        numberOfAyahs: number;
+        revelationType: string;
     };
     text: string;
-  }
-  
+}
+
+export interface QuranVerseWithAudio extends QuranVerse, QuranVerseAudio {}
 
 // Configure the Axios instance with the base URL
 const instance: AxiosInstance = axios.create({

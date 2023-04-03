@@ -1,17 +1,19 @@
 import React from 'react'
-import { View, StyleSheet, TouchableOpacity, ImageBackground, Dimensions } from 'react-native'
-import { scale, verticalScale } from 'react-native-size-matters'
+import { View, StyleSheet, ImageBackground, Dimensions } from 'react-native'
+import { verticalScale } from 'react-native-size-matters'
 import { getStatusBarHeight } from 'react-native-status-bar-height'
 import { BlurView } from "@react-native-community/blur";
-
+import ViewShot from "react-native-view-shot";
 
 import useQuranVerse from './useQuranVerse'
 import { Spinner, Text } from './Components'
+import Controls from './Controls'
 
 const { width, height } = Dimensions.get('window')
 
 const App = () => {
-  const { verse, englishVerse, loading, fetchVerse, imageSource } = useQuranVerse()
+  const ref = React.useRef();
+  const { verse, englishVerse, loading, fetchVerse, getRandomImage, toggleAudio, isPlaying, imageSource } = useQuranVerse()
 
   return (
     <ImageBackground
@@ -57,9 +59,14 @@ const App = () => {
               <Text str={` - ${verse?.surah?.number}:${verse?.numberInSurah} -`} />
             </View>
             <View style={{ flex: 1 }}>
-              <TouchableOpacity onPress={() => fetchVerse()}>
-                <Text str={'new verse'} />
-              </TouchableOpacity>
+              <Controls
+                onRefreshPress={fetchVerse}
+                onDownloadPress={() => { }}
+                onSearchPress={() => { }}
+                onPlayPress={toggleAudio}
+                onScreenshotPress={getRandomImage}
+                isPlaying={isPlaying}
+              />
             </View>
           </View>
         }
