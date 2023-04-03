@@ -38,17 +38,19 @@ const App = () => {
                   blurType="light"
                   blurAmount={10}
                   reducedTransparencyFallbackColor="white"
-                  style={{ borderRadius: 10 }}
+                  style={[{ borderRadius: 10 }, styles.centered]}
                 >
-                  <Text
-                    str={verse?.text}
-                    big
-                    style={{
-                      fontWeight: 'bold',
-                      paddingVertical: verticalScale(10),
-                    }}
-                  />
-                  <Text str={englishVerse?.text} big />
+                  <View style={{ flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text
+                      str={verse?.text}
+                      big
+                      style={{
+                        fontWeight: 'bold',
+                        paddingVertical: verticalScale(10),
+                      }}
+                    />
+                    <Text str={englishVerse?.text} big />
+                  </View>
                 </BlurView>
               </View>
 
@@ -71,7 +73,7 @@ const App = () => {
             </View>
           }
         </View>
-      </ImageBackground >
+      </ImageBackground>
     </ViewShot>
   )
 }
