@@ -1,8 +1,7 @@
-import { useState, useEffect, useRef } from 'react';
-import { Alert } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { Alert, Share } from 'react-native';
 import { get, QuranVerse, QuranVerseWithAudio } from './api';
 import { captureRef } from 'react-native-view-shot';
-import { CameraRoll } from "@react-native-camera-roll/camera-roll";
 import images from './assets/images';
 import useAudioPlayer from './useAudio';
 
@@ -66,12 +65,16 @@ const useQuranVerse = () => {
             format: 'jpg',
             quality: 1,
         });
-        console.log(result, ' before here')
         try {
-            const saveResult = await CameraRoll.save(result, { type: 'photo' });
-            console.log('Photo saved to camera roll:', saveResult);
+            const shareOptions = {
+                title: `${verse?.surah.name} - ${englishVerse?.surah.name}`,
+                url: result,
+                message: `- ${verse?.surah?.number}:${verse?.numberInSurah} : ${verse?.surah.name} - ${englishVerse?.surah.englishName} -`,
+            };
+            const shareResponse = await Share.share(shareOptions);
+            console.log('Share response', shareResponse);
         } catch (error) {
-            console.log('Error saving photo to camera roll:', error);
+            console.error(error);
         }
     }
 

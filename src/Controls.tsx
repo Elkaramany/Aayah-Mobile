@@ -20,7 +20,7 @@ const Controls: React.FC<Props> = ({ onRefreshPress, onDownloadPress, onSearchPr
             <TouchableOpacity onPress={onRefreshPress}>
                 <RefreshIcon size={size} color={color} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={onDownloadPress}>
+            <TouchableOpacity style={{ transform: [{ rotateX: '180deg' }] }} onPress={onDownloadPress}>
                 <DownloadIcon size={size} color={color} />
             </TouchableOpacity>
             <TouchableOpacity onPress={onSearchPress}>
