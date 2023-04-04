@@ -24,8 +24,8 @@ const useQuranVerse = () => {
             stopAudio()
             setLoading(true)
             //to prevent server caching of old verses
-            let { data: englishVerse, success: englishVerseSuccess } = await get<QuranVerse>(`${ayahNumber}/en.sahih`)
-            let { data: arabicVerse, success: arabicVerseSuccess } = await get<QuranVerseWithAudio>(`${ayahNumber}/ar.hudhaify?audio=1`)
+            let { data: englishVerse, success: englishVerseSuccess } = await get<QuranVerse>(`ayah/${ayahNumber}/en.sahih`)
+            let { data: arabicVerse, success: arabicVerseSuccess } = await get<QuranVerseWithAudio>(`ayah/${ayahNumber}/ar.hudhaify?audio=1`)
             setLoading(false)
             if (englishVerseSuccess && arabicVerseSuccess) {
                 loadAudio(arabicVerse?.audio)
@@ -72,7 +72,6 @@ const useQuranVerse = () => {
                 message: `- ${verse?.surah?.number}:${verse?.numberInSurah} : ${verse?.surah.name} - ${englishVerse?.surah.englishName} -`,
             };
             const shareResponse = await Share.share(shareOptions);
-            console.log('Share response', shareResponse);
         } catch (error) {
             console.error(error);
         }
@@ -82,7 +81,14 @@ const useQuranVerse = () => {
         setAyahNumber(Math.floor(Math.random() * 6236) + 1)
     }
 
-    return { verse, englishVerse, fetchVerse, getRandomImage, toggleAudio, isPlaying, loading, imageSource, viewShotRef, captureScreen, };
+    return {
+        verse, englishVerse,
+        fetchVerse, getRandomImage,
+        toggleAudio, isPlaying,
+        loading, imageSource,
+        viewShotRef, captureScreen,
+        setAyahNumber,
+    };
 };
 
 export default useQuranVerse;

@@ -48,7 +48,7 @@ export interface QuranVerseWithAudio extends QuranVerse, QuranVerseAudio {}
 
 // Configure the Axios instance with the base URL
 const instance: AxiosInstance = axios.create({
-    baseURL: "https://api.alquran.cloud/v1/ayah/",
+    baseURL: "https://api.alquran.cloud/v1/",
 });
 
 // Define the response handler function

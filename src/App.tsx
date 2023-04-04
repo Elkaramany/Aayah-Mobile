@@ -17,19 +17,8 @@ import axios from 'axios'
 const { width, height } = Dimensions.get('window')
 
 const App = () => {
-  const { verse, englishVerse, loading, fetchVerse, getRandomImage, toggleAudio, isPlaying, imageSource, viewShotRef, captureScreen } = useQuranVerse()
+  const { verse, englishVerse, loading, fetchVerse, getRandomImage, toggleAudio, setAyahNumber, isPlaying, imageSource, viewShotRef, captureScreen } = useQuranVerse()
   const [ayahSearch, setAyahSearch] = React.useState(false)
-
-  React.useEffect(() => {
-    let updatedSurahs = AllSurahs.map((surah) => {
-      return {
-        label: `${surah.englishName} - ${surah.name}`,
-        value: `${surah.value}-${surah.numberOfAyahs}`
-      }
-    })
-
-    console.log(updatedSurahs)
-  }, [])
 
   return (
     <View style={{ flex: 1 }}>
@@ -102,8 +91,9 @@ const App = () => {
       {ayahSearch &&
         <SearchModal
           isVisible={ayahSearch}
-          onClose={() => {
+          onClose={(val: number) => {
             setAyahSearch(false)
+            setAyahNumber(val)
           }}
         />
       }
