@@ -331,8 +331,6 @@ PODS:
     - glog
   - react-native-blur (4.3.0):
     - React-Core
-  - react-native-splash-screen (3.3.0):
-    - React-Core
   - react-native-view-shot (3.6.0):
     - React-Core
   - React-perflogger (0.71.5)
@@ -421,6 +419,8 @@ PODS:
     - React-perflogger (= 0.71.5)
   - RNCPicker (1.8.1):
     - React-Core
+  - RNShare (8.2.1):
+    - React-Core
   - RNSound (0.11.2):
     - React-Core
     - RNSound/Core (= 0.11.2)
@@ -480,7 +480,6 @@ DEPENDENCIES:
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - "react-native-blur (from `../node_modules/@react-native-community/blur`)"
-  - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - react-native-view-shot (from `../node_modules/react-native-view-shot`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -496,6 +495,7 @@ DEPENDENCIES:
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCPicker (from `../node_modules/@react-native-community/picker`)"
+  - RNShare (from `../node_modules/react-native-share`)
   - RNSound (from `../node_modules/react-native-sound`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -561,8 +561,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/logger"
   react-native-blur:
     :path: "../node_modules/@react-native-community/blur"
-  react-native-splash-screen:
-    :path: "../node_modules/react-native-splash-screen"
   react-native-view-shot:
     :path: "../node_modules/react-native-view-shot"
   React-perflogger:
@@ -593,6 +591,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNCPicker:
     :path: "../node_modules/@react-native-community/picker"
+  RNShare:
+    :path: "../node_modules/react-native-share"
   RNSound:
     :path: "../node_modules/react-native-sound"
   RNSVG:
@@ -635,7 +635,6 @@ SPEC CHECKSUMS:
   React-jsinspector: 14a342151ab810862998dfc99e2720746734e9b3
   React-logger: 94ec392ae471683635e4bf874d4e82f675399d2d
   react-native-blur: 50c9feabacbc5f49b61337ebc32192c6be7ec3c3
-  react-native-splash-screen: 4312f786b13a81b5169ef346d76d33bc0c6dc457
   react-native-view-shot: 705f999ac2a24e4e6c909c0ca65c732ed33ca2ff
   React-perflogger: 883a55a9a899535eaf06d0029108ef9ef22cce92
   React-RCTActionSheet: 1a3b8416688a3d291367be645022886f71d6842a
@@ -651,6 +650,7 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: 511f4301d85daf85abface9afb8d2df2d49f87d3
   ReactCommon: 4f43b72066f27bfe1f63838c61763f59e7112536
   RNCPicker: 914b557e20b3b8317b084aca9ff4b4edb95f61e4
+  RNShare: eaee3dd5a06dad397c7d3b14762007035c5de405
   RNSound: 6c156f925295bdc83e8e422e7d8b38d33bc71852
   RNSVG: 53c661b76829783cdaf9b7a57258f3d3b4c28315
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608

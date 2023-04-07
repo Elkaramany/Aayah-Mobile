@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native'
 import { DownloadIcon, PauseIcon, PlayIcon, RefreshIcon, ScreenshotIcon, SearchIcon } from './assets/Icon'
 
 interface Props {
@@ -20,9 +20,11 @@ const Controls: React.FC<Props> = ({ onRefreshPress, onDownloadPress, onSearchPr
             <TouchableOpacity onPress={onRefreshPress}>
                 <RefreshIcon size={size} color={color} />
             </TouchableOpacity>
-            <TouchableOpacity style={{ transform: [{ rotateX: '180deg' }] }} onPress={onDownloadPress}>
-                <DownloadIcon size={size} color={color} />
-            </TouchableOpacity>
+            {Platform.OS === 'ios' &&
+                <TouchableOpacity style={{ transform: [{ rotateX: '180deg' }] }} onPress={onDownloadPress}>
+                    <DownloadIcon size={size} color={color} />
+                </TouchableOpacity>
+            }
             <TouchableOpacity onPress={onSearchPress}>
                 <SearchIcon size={size} color={color} />
             </TouchableOpacity>

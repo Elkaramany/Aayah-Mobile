@@ -71,7 +71,7 @@ const useQuranVerse = () => {
                 url: result,
                 message: `- ${verse?.surah?.number}:${verse?.numberInSurah} : ${verse?.surah.name} - ${englishVerse?.surah.englishName} -`,
             };
-            const shareResponse = await Share.share(shareOptions);
+            await Share.share(shareOptions);
         } catch (error) {
             console.error(error);
         }

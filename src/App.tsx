@@ -10,10 +10,6 @@ import useQuranVerse from './useQuranVerse'
 import { Spinner, Text } from './Components'
 import Controls from './Controls'
 
-import AllSurahs from './Quran.json'
-
-import axios from 'axios'
-
 const { width, height } = Dimensions.get('window')
 
 const App = () => {

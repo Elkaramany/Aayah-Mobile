@@ -10,7 +10,7 @@ import { Search2Icon } from './assets/Icon';
 
 interface Props {
     isVisible: boolean
-    onClose: (val?: number) => void
+    onClose: (val: number) => void
 }
 
 function splitString(str: string): [string, string] {
@@ -99,7 +99,7 @@ const SearchModal: React.FC<Props> = ({ isVisible, onClose }) => {
     const searchSurahAyah = async () => {
         if (selectedSurah.length > 0 && selectedAyah.length > 0) {
             let { data: selectedVerse, success } = await get<QuranVerse>(`ayah/${splitString(selectedSurah)[0]}:${selectedAyah}/en.sahih`)
-            if (success) onClose(selectedVerse?.number)
+            if (success && selectedVerse?.number) onClose(selectedVerse?.number)
         }
     }
 
